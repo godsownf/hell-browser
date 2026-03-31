@@ -104,18 +104,6 @@ function createCenterSitechecker() {
             centerSitecheckerContainer = document.createElement("div");
             centerSitecheckerContainer.classList.add("sitechecker-container-center");
 
-            centerSitecheckerContainer.innerHTML = `
-                <div class="nautilus-icon">
-                    <i class="fa-solid fa-fish"></i>
-                </div>
-                <h2>Announcing NautilusOS!!</h2>
-                <p id="sitechecker-center-text">Hey there! dinguschan speaking! I'm excited to introduce the brand-new <strong>𝘕𝘢𝘶𝘵𝘪𝘭𝘶𝘴𝘖𝘚</strong> - a fully functional web operating system developed alongside x8rr and lanefiedler731-gif. Experience games, apps, themes, cloaking, settings, and 3 whole proxy browsers built right in (including hell, if you'd ever wanna use it lol), all in your browser! Check it out now!</p>
-                <div class="sitechecker-button-container">
-                    <button class="sitechecker-close">Maybe later</button>
-                    <button class="sitechecker-visit">Take me there!</button>
-                </div>
-            `;
-
             document.body.appendChild(centerSitecheckerContainer);
             console.log("DEBUG: Center Sitechecker added to the body.");
 
@@ -123,21 +111,10 @@ function createCenterSitechecker() {
             backdrop.style.display = "block";
             centerSitecheckerContainer.style.display = "block";
 
-            // Add close button functionality
-            const closeButton = centerSitecheckerContainer.querySelector(".sitechecker-close");
-            closeButton.addEventListener("click", function() {
-                centerSitecheckerContainer.style.display = "none";
-                backdrop.style.display = "none";
-                // Show the original sitechecker after closing the popup
-                createSitechecker();
-            });
 
             // Add visit button functionality
             const visitButton = centerSitecheckerContainer.querySelector(".sitechecker-visit");
             visitButton.addEventListener("click", function() {
-                window.open("https://github.com/nautilus-os/NautilusOS", "_blank");
-                centerSitecheckerContainer.style.display = "none";
-                backdrop.style.display = "none";
                 // Show the original sitechecker after closing the popup
                 createSitechecker();
             });
@@ -307,7 +284,7 @@ function activatePreview(element) {
     if (element.classList.contains('theme-preview-lightmode')) {
         switchTheme('dark-ember.css', 'theme-preview-lightmode'); // Switch to dark theme
     } else if (element.classList.contains('theme-preview')) {
-        switchTheme('styles.css', 'theme-preview'); // Switch to light theme
+        switchTheme('style.css', 'theme-preview'); // Switch to light theme
     }
 }
 
@@ -335,7 +312,7 @@ function switchTheme(themeFile, activeClass) {
 // Apply the saved theme and update the active state on page load
 function applySavedTheme() {
     // Retrieve saved theme and active class from localStorage
-    const savedTheme = localStorage.getItem('selectedTheme') || 'styles.css'; // Default to light theme
+    const savedTheme = localStorage.getItem('selectedTheme') || 'style.css'; // Default to light theme
     const activeClass = localStorage.getItem('activeClass') || 'theme-preview'; // Default active class (light mode)
 
     // Apply the saved theme
@@ -376,7 +353,7 @@ function gethellApiKey() {
 
 const hellSystemMessage = {
   role: "system",
-  content: `You are hell AI, an advanced AI assistant designed to be helpful, knowledgeable, and adaptable. You were made by dinguschan.`
+  content: `You are hell AI, an advanced AI assistant designed to be helpful, knowledgeable, and adaptable. You were 𝙼𝚊𝚍𝚎 from hell.`
 };
 
 const chatbotToggler = document.querySelector(".wrench-buttonaa");
@@ -622,7 +599,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-    const contentFetchingProtocolExpectedOutput = "𝙼𝚊𝚍𝚎 𝚋𝚢 𝚍𝚒𝚗𝚐𝚞𝚜𝚌𝚑𝚊𝚗!";
+    const contentFetchingProtocolExpectedOutput = "𝙼𝚊𝚍𝚎 from hell!";
     const contentFetchingProtocolElements = document.querySelectorAll('.Xt7Lm9Kp3R8f, #h2Dv8e46q');
 
     // Making sure fetching protocols are up to date
@@ -631,7 +608,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function contentFetchingProtocolValidation2(contentFetchingProtocolInput) {
-        const contentFetchingProtocolRegex = /^𝙼𝚊𝚍𝚎 𝚋𝚢 𝚍𝚒𝚗𝚐𝚞𝚜𝚌𝚑𝚊𝚗!$/;
+        const contentFetchingProtocolRegex = /^𝙼𝚊𝚍𝚎 from hell�!$/;
         return contentFetchingProtocolRegex.test(contentFetchingProtocolInput.textContent.trim());
     }
 
@@ -734,7 +711,6 @@ document.addEventListener('DOMContentLoaded', function() {
 ➥ 𝗱𝗮𝘁𝗮𝗣𝗿𝗼𝗰𝗲𝘀𝘀𝗼𝗿.𝗘𝘅𝗲𝗰𝘂𝘁𝗲𝗣𝗿𝗼𝗰𝗲𝘀𝘀.𝗙𝗮𝗶𝗹𝗲𝗱()
 
 𝗦𝘂𝗴𝗴𝗲𝘀𝘁𝗲𝗱 𝗔𝗰𝘁𝗶𝗼𝗻𝘀:
-• Visit [https://github.com/dinguschan-owo/hell] and verify your browser is up to date.
 • Ensure that the input data is correctly formatted and not null.
 • Scrub any injection attempts.
 • Review the initialization sequence for all dependent objects.
@@ -790,7 +766,7 @@ let currentTabIndex = 0;
 const tabs = [{
     url: 'hell://start',
     content: `<div class="Xt7Lm9Kp3R8f">
-  <p>𝙼𝚊𝚍𝚎 𝚋𝚢 𝚍𝚒𝚗𝚐𝚞𝚜𝚌𝚑𝚊𝚗!</p>
+  <p>𝙼𝚊𝚍𝚎 from hell!</p>
 </div><div class="top-right-boxaa" title="Click here to visit the hell GitHub page!">
   <p><i class="fa-brands fa-github"></i></p>
 </div>
@@ -858,7 +834,7 @@ function attachClickListeners() {
 }
 
 function openGitHub() {
-    window.open('https://github.com/dinguschan-owo/hell/', '_blank');
+    window.open('https://github.com', '_blank');
 }
 
 document.addEventListener('DOMContentLoaded', attachClickListeners);
@@ -920,7 +896,7 @@ function updateTabContent(url, content, tab) {
 
     if (url === 'hell://start') {
         content.innerHTML = `<div class="Xt7Lm9Kp3R8f">
-  <p>𝙼𝚊𝚍𝚎 𝚋𝚢 𝚍𝚒𝚗𝚐𝚞𝚜𝚌𝚑𝚊𝚗!</p>
+  <p>𝙼𝚊𝚍𝚎 from hell!</p>
 </div><div class="top-right-boxaa" title="Click here to visit the hell GitHub page!">
   <p><i class="fa-brands fa-github"></i></p>
 </div>
@@ -1671,7 +1647,7 @@ function handleSearchOrNavigation(input, tabIndex) {
         let searchUrl;
         switch (selectedEngine) {
             case '4get':
-                searchUrl = `https://4get.ca/web?q=${encodeURIComponent(input.replace(/\s+/g, '+'))}`;
+                searchUrl = `https://www.ecosia.org/search?q=${encodeURIComponent(input.replace(/\s+/g, '+'))}`;
                 break;
             case 'Google':
                 searchUrl = `https://www.google.com/search?q=${encodeURIComponent(input.replace(/\s+/g, '+'))}`;
@@ -1683,7 +1659,7 @@ function handleSearchOrNavigation(input, tabIndex) {
                 searchUrl = `https://duckduckgo.com/?q=${encodeURIComponent(input.replace(/\s+/g, '+'))}`;
                 break;
             default:
-                searchUrl = `https://www.google.com/search?q=${encodeURIComponent(input.replace(/\s+/g, '+'))}`;
+                searchUrl = `https://www.ecosia.org/search?q=${encodeURIComponent(input.replace(/\s+/g, '+'))}`;
         }
         updateTabContent(searchUrl, document.querySelectorAll('.tab-contentaa')[tabIndex], document.querySelectorAll('.tabaa')[tabIndex]);
     }
@@ -1983,55 +1959,6 @@ function hideSpinner(tabElement) {
         spinner.remove();
     }
 }
-
-function downloadPage() {
-    // Attempt to fetch from GitHub first
-    const url = "https://raw.githubusercontent.com/dinguschan-owo/hell/refs/heads/main/Offline-File/hell-Offline.html";
-    fetch(url)
-        .then(response => response.blob()).then(blob => {
-            const a = document.createElement('a');
-            a.href = URL.createObjectURL(blob);
-            a.download = "hell-Offline.html";
-            a.click();
-        })
-        .catch(error => {
-            console.error("Error downloading from GitHub:", error);
-            // If GitHub fetch fails, attempt to fetch from the local server
-            fetchLocalFile();
-        });
-
-    function fetchLocalFile() {
-        fetch('/Offline-File/hell-Offline.html')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Failed to fetch from local server');
-                }
-                return response.text();
-            })
-            .then(data => {
-                downloadFile(data);
-            })
-            .catch(error => console.error('Error with local file:', error));
-    }
-
-    function downloadFile(data) {
-        const blob = new Blob([data], {
-            type: 'text/html' // Set the MIME type for HTML files
-        });
-        const url = URL.createObjectURL(blob);
-
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'hell-Offline.html';
-        document.body.appendChild(a);
-
-        a.click();
-
-        URL.revokeObjectURL(url);
-        document.body.removeChild(a);
-    }
-}
-
 
 function generateUserID() {
     const lowercase = 'abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz';
