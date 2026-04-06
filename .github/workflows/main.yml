@@ -1,0 +1,89 @@
+name: Full Lint, Fix & Cleanup
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    if: github.actor != 'github-actions[bot]'
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install tools
+        run: |
+          npm init -y
+          npm install --no-save \
+            eslint \
+            prettier \
+            htmlhint \
+            stylelint \
+            stylelint-config-standard \
+            eslint-plugin-unused-imports \
+            eslint-plugin-html
+
+      # --- Auto Fix Everything ---
+      - name: Run full auto-fix
+        run: |
+          # ESLint (with aggressive cleanup)
+          npx eslint . \
+            --ext .js \
+            --fix \
+            --env browser,es2021 \
+            --parser-options ecmaVersion:12 \
+            --plugin unused-imports \
+            --rule 'no-unused-vars:["warn",{ "vars":"all","args":"after-used","ignoreRestSiblings":true,"varsIgnorePattern":"^_","argsIgnorePattern":"^_" }]' \
+            --rule 'unused-imports/no-unused-imports:error'
+
+          # Prettier formatting
+          npx prettier --write . \
+            --single-quote \
+            --semi \
+            --tab-width 2 \
+            --print-width 100
+
+          # CSS fixes
+          npx stylelint "**/*.css" \
+            --fix \
+            --config '{"extends":"stylelint-config-standard"}'
+
+      # --- Validate HTML ---
+      - name: Validate HTML
+        run: |
+          npx htmlhint "**/*.html" \
+            --rules tagname-lowercase,attr-lowercase,attr-value-double-quotes,doctype-first,tag-pair,id-unique
+
+      # --- Final verification (fail if still bad) ---
+      - name: Final lint check
+        run: |
+          npx eslint . --ext .js
+
+      # --- Commit back ---
+      - name: Commit & push fixes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add -A
+
+          if git diff --cached --quiet; then
+            echo "No cleanup needed"
+          else
+            git commit -m "chore: full lint, format, and unused cleanup"
+            git push
+          fi
